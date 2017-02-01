@@ -1,12 +1,12 @@
-from gluon.tools import prettydate
+from gluon.contrib.websocket_messaging import websocket_send
 
 
 @auth.requires_login()
 def index():
     form = SQLFORM(Post, formstyle='divs')
     if form.process().accepted:
-        #enviar mensage ao comet queue
-        pass
+        js = "JQquery('.new').slideDown('slow')"
+        websocket_send('http://127.0.0.1:8888', js, 'chatkey', 'mygroup')
     messages = db(Post).select(orderby=~Post.created_on)
 
     return dict(form=form,messages=messages)

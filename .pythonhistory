@@ -1,0 +1,2 @@
+from gluon.contrib.websocket_messaging import websocket_send
+exit()
