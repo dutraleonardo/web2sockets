@@ -3,8 +3,8 @@
 
 <h2>{{=auth.user.first_name}}</h2>
 {{=form}}
-    <div class="new" style="display:none">
-      <a href="{{=URL('default', 'index')}}" class="btn btn-primary" role="button">NEW MESSAGE!</a>   
+<div class="new" style="display:none">
+  <a href="{{=URL('default', 'index')}}" class="btn btn-primary" role="button">NEW MESSAGE!</a>   
 </div>
 <ul>
 {{for msg in messages:}}
@@ -17,9 +17,9 @@
   </li>
 {{pass}}
 </ul>
-<script type="text/javascript">
-  JQuery(document).ready(function(){
-    var data;
-    web2py_websocket('ws://0.0.0.1:8888/realtime/mygroup',function(e){data=eval('('+e.data+')')})
-  });
+<script>
+$(document).ready(function(){
+  var data;
+  $.web2py.web2py_websocket('ws://127.0.0.1:8888/realtime/mygroup', function(e){data=eval('('+e.data+')')});
+});
 </script>
